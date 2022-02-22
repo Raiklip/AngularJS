@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>T03</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+    <div style="margin-left:15pt">
+        <h3>List students</h3>
+        <div ng-init="Lectures=[
+        {name: 'Huong Hoang Luong',age: 30,gender: 'Male'},
+        {name: 'Nhung Mai Thi Cam',age: 27,gender: 'Female'},
+        {name: 'Nghi Cong Tran',age: 27,gender: 'Male'},
+        {name: 'Trung Phuoc Le',age: 25,gender: 'Male'}
+        ]">
+            <pre>Click header link to sort, input into filter text to filter</pre>
+            <hr>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="" ng-click="order('name')">Name</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="order('age')">Age</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="order('gender')">Gender</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="" id="" ng-model="search.name"></td>
+                        <td><input type="text" name="" id="" ng-model="search.age"></td>
+                        <td><input type="text" name="" id="" ng-model="search.gender"></td>
+                    </tr>
+                    <tr ng-repeat="obj in Lectures | orderBy:predicate:reverse | filter:search">
+                        <td>{{obj.name}}</td>
+                        <td>{{obj.age}}</td>
+                        <td>{{obj.gender}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myController", function($scope) {
+        $scope.predicate = 'name';
+        $scope.reverse = true;
+        $scope.order = function(predicate) {
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+            $scope.predicate = predicate;
+        };
+    });
+</script>
+
+</html>

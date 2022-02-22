@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>T03</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-resource.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <h3 style="margin-left:12pt">
+            List of Lectures
+        </h3>
+        <div class="container-fluid">
+            <pre>Click header link to sort, input into filter text to filter</pre>
+        </div>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><a href="" ng-click="order('name')">Name</a></th>
+                    <th><a href="" ng-click="order('role')">Role</a></th>
+                    <th><a href="" ng-click="order('gender')">Gender</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="" id="" ng-model="search.name"></td>
+                    <td><input type="text" name="" id="" ng-model="search.role"></td>
+                    <td><input type="text" name="" id="" ng-model="search.gender"></td>
+                </tr>
+                <tr ng-repeat="obj in Lectures">
+                    <td>{{ obj.name}}</td>
+                    <td>{{ obj.role}}</td>
+                    <td>{{ obj.gender}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myController", function($scope) {
+        $scope.Lectures = [{
+            name: 'Nga Cao Hong',
+            role: "Manager",
+            gender: 'Female'
+        }, {
+            name: 'Kien Trung Nguyen',
+            role: "Lecturer",
+            gender: 'Male'
+        }, {
+            name: 'Dung Hung Nguyen',
+            role: "Manager",
+            gender: 'Male'
+        }, {
+            name: 'Loan Le Thi Minh',
+            role: "Lecturer",
+            gender: 'Female'
+        }, {
+            name: 'Nga Cao Hong',
+            role: "Manager",
+            gender: 'Female'
+        }, {
+            name: 'Nga Cao Hong',
+            role: "Manager",
+            gender: 'Female'
+        }, {
+            name: 'Nga Cao Hong',
+            role: "Manager",
+            gender: 'Female'
+        }, {
+            name: 'Nga Cao Hong',
+            role: "Manager",
+            gender: 'Female'
+        }, {
+            name: 'Nga Cao Hong',
+            role: "Manager",
+            gender: 'Female'
+        }, {
+            name: 'Nga Cao Hong',
+            role: "Manager",
+            gender: 'Female'
+        }, {
+            name: 'Nga Cao Hong',
+            role: "Manager",
+            gender: 'Female'
+        }, ]
+    });
+</script>
+
+</html>
