@@ -35,7 +35,7 @@
                     <td><input type="text" name="" id="" ng-model="search.role"></td>
                     <td><input type="text" name="" id="" ng-model="search.gender"></td>
                 </tr>
-                <tr ng-repeat="obj in Lectures">
+                <tr ng-repeat="obj in Lectures | filter: search | orderBy:predicate:reverse">
                     <td>{{ obj.name}}</td>
                     <td>{{ obj.role}}</td>
                     <td>{{ obj.gender}}</td>
@@ -64,38 +64,34 @@
             role: "Lecturer",
             gender: 'Female'
         }, {
-            name: 'Nga Cao Hong',
-            role: "Manager",
+            name: 'Linh Ong Thi My',
+            role: "Lectures",
             gender: 'Female'
         }, {
-            name: 'Nga Cao Hong',
-            role: "Manager",
+            name: 'Anh Duy Vo',
+            role: "Lecturer",
+            gender: 'Male'
+        }, {
+            name: 'Huong Hoang Luong',
+            role: "Lecturer",
+            gender: 'Male'
+        }, {
+            name: 'Nghi Cong Tran',
+            role: "Lecturer",
+            gender: 'Male'
+        }, {
+            name: 'Nhung Mai Thi Cam',
+            role: "Lecturer",
             gender: 'Female'
         }, {
-            name: 'Nga Cao Hong',
-            role: "Manager",
-            gender: 'Female'
-        }, {
-            name: 'Nga Cao Hong',
-            role: "Manager",
-            gender: 'Female'
-        }, {
-            name: 'Nga Cao Hong',
-            role: "Manager",
-            gender: 'Female'
-        }, {
-            name: 'Nga Cao Hong',
-            role: "Manager",
-            gender: 'Female'
-        }, {
-            name: 'Nga Cao Hong',
-            role: "Manager",
-            gender: 'Female'
-        } ];
+            name: 'Trung Le Phuoc',
+            role: "Lecturer",
+            gender: 'Male'
+        }];
         $scope.predicate = 'name';
         $scope.reverse = true;
-        $scope.order = function(predicate){
-            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse: false;
+        $scope.order = function(predicate) {
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
             $scope.predicate = predicate;
         };
     });
