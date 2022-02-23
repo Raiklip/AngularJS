@@ -91,7 +91,13 @@
             name: 'Nga Cao Hong',
             role: "Manager",
             gender: 'Female'
-        }, ]
+        } ];
+        $scope.predicate = 'name';
+        $scope.reverse = true;
+        $scope.order = function(predicate){
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse: false;
+            $scope.predicate = predicate;
+        };
     });
 </script>
 
