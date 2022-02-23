@@ -35,17 +35,19 @@
                     <td><input type="text" name="" id="" ng-model="search.role"></td>
                     <td><input type="text" name="" id="" ng-model="search.gender"></td>
                 </tr>
-                <tr ng-repeat="obj in Lectures | filter: search | orderBy:predicate:reverse">
+                <tr ng-repeat="obj in Lectures | filter: search | orderBy:predicate:reverse | filter:pagnite">
                     <td>{{ obj.name}}</td>
                     <td>{{ obj.role}}</td>
                     <td>{{ obj.gender}}</td>
                 </tr>
             </tbody>
         </table>
+        <pagination total-items="totalItems" ng-model="currentPage" max-size="'5" boundary-links="'true" items-per-page="'numPerPage" class="pagination-sm">
+        </pagination>
     </div>
 </body>
 <script>
-    var app = angular.module("myApp", []);
+    var app = angular.module("myApp", ['ui.bootstrap', 'ngResource']);
     app.controller("myController", function($scope) {
         $scope.Lectures = [{
             name: 'Nga Cao Hong',
@@ -94,6 +96,21 @@
             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
             $scope.predicate = predicate;
         };
+        //paging
+
+        //set the current page
+        $scope.currentPage = 1;
+        //get all the date rows
+        $scope.totalItems = $scope.Lectures.length;
+        //set number of rows on a page
+        $scope.numPerPage = 5;
+        //perform pages
+        $scope.paginate = function(value) {
+            var begin, end, index;
+            //calculate the first row for a page
+            begin = ($scope.currentPage - 1) * $scope.numPerPage;
+            //calculate the last row for a page
+        }
     });
 </script>
 
